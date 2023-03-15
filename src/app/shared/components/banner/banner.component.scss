@@ -1,0 +1,28 @@
+.banner{
+  background: url(/assets/images/banner.jpg) ;
+  background-size: cover;
+  height: 70px;
+  width: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  img{
+    max-width: 50px;
+    margin-left: 10px;
+  }
+    a{
+      font-size: 1.3em;
+      color: #fff;
+      text-decoration: none;
+      text-shadow: 2px 0 0 rgb(0, 0, 0), 2px 2px 0 rgb(0, 0, 0), 0 2px 0 rgb(0, 0, 0), -2px 2px 0 rgb(0, 0, 0), -2px 0 0 rgb(0, 0, 0), -2px -2px 0 rgb(0, 0, 0), 0 -2px 0 rgb(0, 0, 0), 2px -2px 0 rgb(0, 0, 0);
+      margin: 0 30px;
+      padding: 0;
+      transition: all 0.3s ease-in-out;
+      &:hover{
+        transition: all 0.3s ease-in-out;
+        color: #ff0000;
+        text-decoration: none;
+      }
+    }
+}

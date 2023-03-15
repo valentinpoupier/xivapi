@@ -1,0 +1,48 @@
+<div class="body">
+  <br>
+  <div class="title">
+    <h1>Character</h1>
+  </div>
+  <div class="form">
+    <div>
+      <label for="">server</label>
+      <select [(ngModel)]="server">
+        <optgroup *ngFor="let groupe of groupes" [label]="groupe.nom">
+          <option *ngFor="let option of groupe.options">{{option}}</option>
+        </optgroup>
+      </select>
+    </div>
+    &nbsp;
+    <label for="name">Name</label>
+    <input type="text" id="name" [(ngModel)]="name" placeholder="Character Name">
+    &nbsp;
+    <button (click)="search()" (click)="cpt=1">Search</button>
+  </div>
+  <div class="table">
+    <div class="btn" *ngIf="cpt>=1">
+      <button (click)="previousPage()" *ngIf="cpt>1">Previous</button>
+      <button (click)="nextPage()" *ngIf="cpt>=1&& characters.Pagination.PageNext > cpt">Next</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Avatar</th>
+          <th>Name</th>
+          <th>Server</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let character of characters.Results">
+          <td><img [src]="character.Avatar" alt=""></td>
+          <td>{{character.Name}}</td>
+          <td>{{character.Server}}</td>
+          <td><a [routerLink]="['/character', character.ID]">Details</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="!characters">
+    <p>No character found</p>
+  </div>
+</div>

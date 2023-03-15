@@ -1,0 +1,45 @@
+<div class="home">
+  <br>
+  <div class="title">
+    <h1><img src="/assets/images/ff14.png"> Sweet XIV <img src="/assets/images/ff14.png"></h1>
+  </div>
+  <div class="description">
+    <h2>
+      The best place to find information about Final Fantasy XIV.
+    </h2>
+  </div>
+  <div class="fonction">
+    <div class="fonction-item">
+      <h2>Items</h2>
+      <p>
+        Search for items, view their stats, and more.
+      </p>
+      <button (click)="invertItem()"><span [hidden]="!item">View Items</span><span [hidden]="item">Hidden Items</span></button>
+      <app-home-item [hidden]="item"></app-home-item>
+    </div>
+    <div class="fonction-item">
+      <h2>Character</h2>
+      <p>
+        Search for characters, view their gear, and more.
+      </p>
+      <button (click)="invertCharacter()"><span [hidden]="!character">View Character</span><span [hidden]="character">Hidden Character</span></button>
+      <app-home-character [hidden]="character" class="hidden"></app-home-character>
+    </div>
+    <div class="fonction-item">
+      <h2>Free Company</h2>
+      <p>
+        Search for free companies, view their members, and more.
+      </p>
+      <button (click)="invertCompany()"><span [hidden]="!company">View Company</span><span [hidden]="company">Hidden Company</span></button>
+      <app-home-company [hidden]="company" class="hidden"></app-home-company>
+    </div>
+    <div class="fonction-item">
+      <h2>Lore</h2>
+      <p>
+        Search for lore, view their pages, and more.
+      </p>
+      <button (click)="invertLore()"><span [hidden]="!lore">View Lore</span><span [hidden]="lore">Hidden Lore</span></button>
+      <app-home-lore [hidden]="lore" class="hidden"></app-home-lore>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+.home{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  text-align: center;
+  padding: 0 1em;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #000000d3;
+  h1{
+    font-size: 2.5em;
+    margin: 0;
+    padding: 0;
+  }
+  .description{
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+  }
+  img{
+    max-width: 50px;
+  }
+  .fonction{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 38%;
+    margin: 0;
+    padding: 0;
+  }
+  .fonction-item{
+    border: 1px solid #ffffff;
+    background-color: #42424280;
+    border-radius: 15px;
+    margin: 0.5em;
+    padding: 0.5em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+    &:hover{
+      transition: all 0.3s ease-in-out;
+      border: 1px solid #afafaf;
+      text-decoration: none;
+      background-color: #000000;
+    }
+    button{
+      color: #ffffff;
+      background-color: #303030;
+      text-decoration: none;
+      font-size: 1em;
+      padding: 0.2em 0.5em;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease-in-out;
+      border: solid 1px #ffffff;
+      border-radius: 5px;
+      cursor: pointer;
+      &:hover{
+        transition: all 0.3s ease-in-out;
+        border: solid 1px #afafaf;
+        background-color: #272727;
+        color: #ff0000;
+        text-decoration: none;
+      }
+      &:active{
+        border: solid 1px #afafaf;
+        background-color: #272727;
+        color: #a0a0a0;
+        text-decoration: none;
+      }
+    }
+  }
+  .fonction-result{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+}
