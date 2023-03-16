@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CharacterList } from 'src/app/shared/models/characterlist';
 import { CharacterService } from 'src/app/shared/services/character/character.service';
 
 @Component({
-  selector: 'app-character',
-  templateUrl: './character.component.html',
-  styleUrls: ['./character.component.scss']
+  selector: 'app-character-search',
+  templateUrl: './character-search.component.html',
+  styleUrls: ['./character-search.component.scss']
 })
-export class CharacterComponent implements OnInit {
+export class CharacterSearchComponent {
+router: Router = this._router;
 
-  constructor(private _characterService : CharacterService) { }
+  constructor(private _characterService : CharacterService, private _activatedRoute : ActivatedRoute, private _router : Router) { }
 
   groupes = [
     { nom: 'Aether', options: ['Adamantoise', 'Cactuar', 'Faerie', 'Gilgamesh', 'Jenova', 'Midgardsormr', 'Sargatanas', 'Siren'] },
@@ -50,18 +52,30 @@ export class CharacterComponent implements OnInit {
 
   cpt : number = 0;
 
-  ngOnInit(): void {
+  numberPage : number[] = [];
 
-  }
+  id : number = 0;
 
+  detail : boolean = false;
 
   search() {
     this._characterService.searchCharacter(this.name, this.server, this.cpt)
       .subscribe((data: CharacterList | any) => {
+        data.Pagination.ResultsPerPage = 10;
         this.characters = data;
         this.characters.Pagination.PageNext = data.Pagination.PageNext
+        this.characters.Pagination.ResultsPerPage = data.Pagination.ResultsPerPage
+        this.numberPage = [];
+        for (let i = 0; i < this.characters.Pagination.PageTotal; i++) {
+          this.numberPage.push(i+1);
+        }
       });
+  }
 
+  getCharacterById(id : number) {
+    this._router.navigate(['/character/', id]);
+    this.id = id;
+    this.detail = true;
   }
 
   nextPage() {
@@ -73,5 +87,12 @@ export class CharacterComponent implements OnInit {
     this.cpt--;
     this.search();
   }
+  back() {
+    this.detail = false;
+    this._router.navigate(['/character'])
+  }
+  changePage(page : number) {
+    this.cpt = page;
+    this.search();
+  }
 }
-

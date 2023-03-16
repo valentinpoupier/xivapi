@@ -224,3 +224,17 @@ export interface Character {
   Town: number;
   Tribe: number;
 }
+
+export interface trueCharacter {
+  Achievements?: any;
+  AchievementsPublic?: any;
+  Character: Character;
+  FreeCompany?: any;
+  FreeCompanyMembers?: any;
+  Friends?: any;
+  FriendsPublic?: any;
+  Minions?: any;
+  Mounts?: any;
+  PvPTeam?: any;
+}
+

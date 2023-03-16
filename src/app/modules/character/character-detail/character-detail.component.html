@@ -1,0 +1,24 @@
+<div class="body">
+  <br>
+  <div *ngIf="!character">
+    <p>No character found</p>
+  </div>
+  <div *ngIf="character" class="parent">
+    <div class="items">
+      <div class="item">
+        <h1>Name: {{character.Character.Name}}</h1>
+        <h2>Server: {{character.Character.Server}}</h2>
+        <h3 *ngIf="character.Character.FreeCompanyName">FC: {{character.Character.FreeCompanyName}}</h3>
+        <h3>Gender: {{gender}}</h3>
+      </div>
+      <div class="item">
+        <h3>Class: {{character.Character.ActiveClassJob.Name}}</h3>
+        <h3>Level: {{character.Character.ActiveClassJob.Level}}</h3>
+        <h3>Exp: {{character.Character.ActiveClassJob.ExpLevel}}/{{character.Character.ActiveClassJob.ExpLevelMax}}</h3>
+      </div>
+    </div>
+    <div class=".item-image">
+      <img [src]="character.Character.Portrait" alt="" width="438" height="598">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="body" *ngIf="!detail">
+  <br>
+  <div class="title">
+    <h2>Search Character</h2>
+  </div>
+  <div class="form">
+    <div>
+      <label for="">server</label>
+      <select [(ngModel)]="server">
+        <option></option>
+        <optgroup *ngFor="let groupe of groupes" [label]="groupe.nom">
+          <option *ngFor="let option of groupe.options">{{option}}</option>
+        </optgroup>
+      </select>
+    </div>
+    <div class="input">
+      <label for="">Name</label>
+      <input type="text" id="name" [(ngModel)]="name" placeholder="Character Name">
+    </div>
+    <button (click)="search()" (click)="cpt=1">Search</button>
+  </div>
+  <div class="table" *ngIf="cpt>=1 && characters.Results">
+    <div class="btn" *ngIf="cpt>1 || (cpt>=1&& characters.Pagination.PageNext > cpt)">
+      <button (click)="previousPage()" *ngIf="cpt>1" class="first-child">Previous</button>
+      <div *ngFor="let page of numberPage" class="page">
+        <button (click)="changePage(page)" [ngClass]="{'active': page == cpt}">{{page}}</button>
+      </div>
+      <button (click)="nextPage()" *ngIf="cpt>=1&& characters.Pagination.PageNext > cpt" class="last-child">Next</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Avatar</th>
+          <th>Name</th>
+          <th>Server</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let character of characters.Results">
+          <td><img [src]="character.Avatar" alt=""></td>
+          <td>{{character.Name}}</td>
+          <td>{{character.Server}}</td>
+          <td><button routerLinkActive="router-link-active" (click)="getCharacterById(character.ID)">Details</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="!characters.Results">
+    <p>No character found</p>
+  </div>
+</div>
+<div *ngIf="detail">
+  <br>
+  <button (click)="back()" class="back">Back</button>
+  <router-outlet></router-outlet>
+</div>
