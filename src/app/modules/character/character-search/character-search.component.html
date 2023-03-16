@@ -19,11 +19,12 @@
     </div>
     <button (click)="search()" (click)="cpt=1">Search</button>
   </div>
+  <br>
   <div *ngIf="isLoading">
     <br>
     <br>
     <br>
-    <img src="/assets/images/loading.gif" alt="">
+    <img src="/assets/images/mog.gif" alt="">
     <br>
     <br>
     <br>
@@ -36,13 +37,13 @@
       </div>
       <button (click)="nextPage()" [disabled]="!characters.Pagination.PageNext" class="last-child">Next</button>
     </div>
+    <br>
     <table>
       <thead>
         <tr>
           <th>Avatar</th>
           <th>Name</th>
           <th>Server</th>
-          <th>Details</th>
         </tr>
       </thead>
       <tbody>
@@ -54,22 +55,31 @@
         </tr>
       </tbody>
     </table>
+    <div class="btn" *ngIf="cpt>1 || (cpt>=1&& characters.Pagination.PageNext > cpt)">
+      <button (click)="previousPage()" [disabled]="!characters.Pagination.PagePrev" class="first-child">Previous</button>
+      <div *ngFor="let page of numberPage" class="page">
+        <button (click)="changePage(page)" [ngClass]="{'active': page == cpt}">{{page}}</button>
+      </div>
+      <button (click)="nextPage()" [disabled]="!characters.Pagination.PageNext" class="last-child">Next</button>
+    </div>
   </div>
   <div *ngIf="!characters.Results">
     <p>No character found</p>
   </div>
 </div>
-<div *ngIf="detail">
+<div *ngIf="detail" class="child">
   <br>
   <div *ngIf="!isLoading">
-    <button (click)="back()" class="back">Back</button>
+    <div class="backin">
+      <button (click)="back()" class="back">Back</button>
+    </div>
     <router-outlet></router-outlet>
   </div>
   <div *ngIf="isLoading">
     <br>
     <br>
     <br>
-    <img src="/assets/images/loading.gif" alt="">
+    <img src="/assets/images/mog.gif" alt="">
     <br>
     <br>
     <br>
