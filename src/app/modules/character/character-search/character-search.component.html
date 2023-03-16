@@ -19,13 +19,22 @@
     </div>
     <button (click)="search()" (click)="cpt=1">Search</button>
   </div>
-  <div class="table" *ngIf="cpt>=1 && characters.Results">
+  <div *ngIf="isLoading">
+    <br>
+    <br>
+    <br>
+    <img src="/assets/images/loading.gif" alt="">
+    <br>
+    <br>
+    <br>
+  </div>
+  <div class="table" *ngIf="cpt>=1 && characters.Results && !isLoading">
     <div class="btn" *ngIf="cpt>1 || (cpt>=1&& characters.Pagination.PageNext > cpt)">
-      <button (click)="previousPage()" *ngIf="cpt>1" class="first-child">Previous</button>
+      <button (click)="previousPage()" [disabled]="!characters.Pagination.PagePrev" class="first-child">Previous</button>
       <div *ngFor="let page of numberPage" class="page">
         <button (click)="changePage(page)" [ngClass]="{'active': page == cpt}">{{page}}</button>
       </div>
-      <button (click)="nextPage()" *ngIf="cpt>=1&& characters.Pagination.PageNext > cpt" class="last-child">Next</button>
+      <button (click)="nextPage()" [disabled]="!characters.Pagination.PageNext" class="last-child">Next</button>
     </div>
     <table>
       <thead>
@@ -52,6 +61,17 @@
 </div>
 <div *ngIf="detail">
   <br>
-  <button (click)="back()" class="back">Back</button>
-  <router-outlet></router-outlet>
+  <div *ngIf="!isLoading">
+    <button (click)="back()" class="back">Back</button>
+    <router-outlet></router-outlet>
+  </div>
+  <div *ngIf="isLoading">
+    <br>
+    <br>
+    <br>
+    <img src="/assets/images/loading.gif" alt="">
+    <br>
+    <br>
+    <br>
+  </div>
 </div>

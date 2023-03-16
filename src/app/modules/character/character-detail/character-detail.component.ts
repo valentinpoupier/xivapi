@@ -1,19 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { trueCharacter } from 'src/app/shared/models/character';
+import { LoadingService } from 'src/app/shared/services/loading/loading.service';
 
 @Component({
   selector: 'app-character-detail',
   templateUrl: './character-detail.component.html',
   styleUrls: ['./character-detail.component.scss']
 })
-export class CharacterDetailComponent {
+export class CharacterDetailComponent implements OnInit {
+
+  isLoading: boolean = false;
 
   character : trueCharacter = this._activatedRoute.snapshot.data['character']
 
   gender : string = ''
 
-  constructor(private _activatedRoute: ActivatedRoute, private _router: Router) {
+  constructor(private _activatedRoute: ActivatedRoute, private loadingService: LoadingService) {
     if(this.character.Character.Gender === 1) {
       this.gender = '♂'
     } else {
@@ -22,5 +25,8 @@ export class CharacterDetailComponent {
     console.log(this.character);
 
    }
+  ngOnInit(): void {
+    this.loadingService.getLoading().subscribe(loading => this.isLoading = loading);
+  }
 
 }

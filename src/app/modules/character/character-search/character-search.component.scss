@@ -121,6 +121,8 @@
       margin-right: auto;
     }
     .page{
+      margin: 5px;
+      padding: 0;
       margin: 0 auto;
     }
     .last-child{
@@ -171,6 +173,12 @@
         transition: all 0.3s ease-in-out;
         background-color: #000000;
         color: #ffdc6b;
+        text-decoration: none;
+      }
+      &:disabled{
+        transition: all 0.3s ease-in-out;
+        background-color: #a5a5a5;
+        color: #ffffff;
         text-decoration: none;
       }
     }

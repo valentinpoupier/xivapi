@@ -1,17 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CharacterList } from 'src/app/shared/models/characterlist';
 import { CharacterService } from 'src/app/shared/services/character/character.service';
+import { LoadingService } from 'src/app/shared/services/loading/loading.service';
 
 @Component({
   selector: 'app-character-search',
   templateUrl: './character-search.component.html',
   styleUrls: ['./character-search.component.scss']
 })
-export class CharacterSearchComponent {
+export class CharacterSearchComponent implements OnInit {
 router: Router = this._router;
 
-  constructor(private _characterService : CharacterService, private _activatedRoute : ActivatedRoute, private _router : Router) { }
+  isLoading: boolean = false;
+
+  constructor(private _characterService : CharacterService, private _activatedRoute : ActivatedRoute, private _router : Router, private loadingService: LoadingService) { }
 
   groupes = [
     { nom: 'Aether', options: ['Adamantoise', 'Cactuar', 'Faerie', 'Gilgamesh', 'Jenova', 'Midgardsormr', 'Sargatanas', 'Siren'] },
@@ -31,6 +34,10 @@ router: Router = this._router;
     { nom: "\u8c46\u8c46\u67f4", options: ["ShuiJingTa2","YinLeiHu2","TaiYangHaiAn2","YiXiuJiaDe2","HongChaChuan2"]},
     { nom: "\u9646\u884c\u9e1f", options: ["HongYuHai","ShenYiZhiDi","LaNuoXiYa","HuanYingQunDao","MengYaChi","YuZhouHeYin","WoXianXiRan","ChenXiWangZuo"]}]
 
+
+    ngOnInit(): void {
+      this.loadingService.getLoading().subscribe(loading => this.isLoading = loading);
+    }
 
   characters: CharacterList= {
     Pagination: {
