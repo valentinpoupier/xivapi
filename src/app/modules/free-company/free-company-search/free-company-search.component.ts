@@ -1,21 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CharacterList } from 'src/app/shared/models/characterlist';
-import { CharacterService } from 'src/app/shared/services/character/character.service';
+import { FCList } from 'src/app/shared/models/fclist';
+import { FreecompanyService } from 'src/app/shared/services/freecompany/freecompany.service';
 import { LoadingService } from 'src/app/shared/services/loading/loading.service';
 
 @Component({
-  selector: 'app-character-search',
-  templateUrl: './character-search.component.html',
-  styleUrls: ['./character-search.component.scss']
+  selector: 'app-free-company-search',
+  templateUrl: './free-company-search.component.html',
+  styleUrls: ['./free-company-search.component.scss']
 })
-export class CharacterSearchComponent implements OnInit {
+export class FreeCompanySearchComponent implements OnInit {
 
   router: Router = this._router;
 
   isLoading: boolean = false;
 
-  constructor(private _characterService : CharacterService, private _router : Router, private loadingService: LoadingService) { }
+  name : string = '';
+
+  server : string = 'Zodiark';
+
+  cpt : number = 0;
+
+  numberPage : number[] = [];
+
+  id : string = '';
+
+  cptImage : number = 0;
+
+  constructor(private _freecompanyService : FreecompanyService, private _router : Router, private loadingService: LoadingService) { }
 
   groupes = [
     { nom: 'Aether', options: ['Adamantoise', 'Cactuar', 'Faerie', 'Gilgamesh', 'Jenova', 'Midgardsormr', 'Sargatanas', 'Siren'] },
@@ -36,12 +48,16 @@ export class CharacterSearchComponent implements OnInit {
     { nom: "\u9646\u884c\u9e1f", options: ["HongYuHai","ShenYiZhiDi","LaNuoXiYa","HuanYingQunDao","MengYaChi","YuZhouHeYin","WoXianXiRan","ChenXiWangZuo"]}
   ]
 
+  getNumberImg() : number {
+    this.cptImage++;
+    return this.cptImage;
+  }
 
-    ngOnInit(): void {
-      this.loadingService.getLoading().subscribe(loading => this.isLoading = loading);
-    }
+  ngOnInit() {
+    this.loadingService.getLoading().subscribe(loading => this.isLoading = loading);
+  }
 
-  characters: CharacterList= {
+  freeCompanies : FCList= {
     Pagination: {
       Page: 0,
       PageNext: 0,
@@ -52,37 +68,18 @@ export class CharacterSearchComponent implements OnInit {
       ResultsTotal: 0
     },
     Results: []
-  };
-
-
-  name : string = '';
-
-  server : string = 'Zodiark';
-
-  cpt : number = 0;
-
-  numberPage : number[] = [];
-
-  id : number = 0;
-
-  detail : boolean = false;
-
-  search() {
-    this._characterService.searchCharacter(this.name, this.server, this.cpt)
-      .subscribe((data: CharacterList | any) => {
-        this.characters = data;
-        this.characters.Pagination.PageNext = data.Pagination.PageNext
-        this.characters.Pagination.ResultsPerPage = data.Pagination.ResultsPerPage
-        this.numberPage = [];
-        for (let i = 0; i < this.characters.Pagination.PageTotal; i++) {
-          this.numberPage.push(i+1);
-        }
-      });
   }
 
-  getCharacterById(id : number) {
-    this._router.navigate(['/character', id]);
-    this.id = id;
+  search() {
+    this._freecompanyService.searchFreecompany(this.name, this.server, this.cpt)
+      .subscribe((data: FCList) => {
+        this.freeCompanies = data;
+        this.numberPage = [];
+        for (let i = 0; i < this.freeCompanies.Pagination.PageTotal; i++) {
+          this.numberPage.push(i);
+        }
+      }
+    );
   }
 
   nextPage() {
@@ -94,8 +91,17 @@ export class CharacterSearchComponent implements OnInit {
     this.cpt--;
     this.search();
   }
+  back() {
+    this._router.navigate(['/free-company'])
+  }
   changePage(page : number) {
     this.cpt = page;
     this.search();
   }
+
+  getFreeCompany(id : string) {
+    this._router.navigate(['/free-company', id]);
+    this.id = id;
+  }
+
 }

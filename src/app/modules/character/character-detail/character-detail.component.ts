@@ -16,7 +16,9 @@ export class CharacterDetailComponent implements OnInit {
 
   gender : string = ''
 
-  constructor(private _activatedRoute: ActivatedRoute, private loadingService: LoadingService) {
+  errorMessage : string = ''
+
+  constructor(private _activatedRoute: ActivatedRoute, private loadingService: LoadingService, private _router : Router) {
     if(this.character.Character.Gender === 1) {
       this.gender = '♂'
     } else {
@@ -27,6 +29,13 @@ export class CharacterDetailComponent implements OnInit {
    }
   ngOnInit(): void {
     this.loadingService.getLoading().subscribe(loading => this.isLoading = loading);
+  }
+  back() {
+    window.history.back();
+  }
+
+  viewFreeCompany(id : string) {
+    this._router.navigate(['../free-company', id]);
   }
 
 }

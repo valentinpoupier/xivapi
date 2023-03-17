@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common';
 import { ItemRoutingModule } from './item-routing.module';
 import { ItemComponent } from './item/item.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { FormsModule } from '@angular/forms';
+import { ItemSearchComponent } from './item-search/item-search.component';
 
 
 @NgModule({
   declarations: [
-    ItemComponent
+    ItemComponent,
+    ItemSearchComponent
   ],
   imports: [
     CommonModule,

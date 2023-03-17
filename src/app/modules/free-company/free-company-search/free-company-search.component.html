@@ -1,0 +1,68 @@
+<div class="body">
+  <br>
+  <div class="title">
+    <h2>Search Free Company</h2>
+  </div>
+  <div class="form">
+    <div class="input">
+      <select [(ngModel)]="server">
+        <option></option>
+        <optgroup *ngFor="let groupe of groupes" [label]="groupe.nom">
+          <option *ngFor="let option of groupe.options">{{option}}</option>
+        </optgroup>
+      </select>
+    </div>
+    &nbsp;
+    <div class="input">
+      <input type="text" id="name" [(ngModel)]="name" placeholder="Free Company Name" (keyup.enter)="search()">
+    </div>
+    &nbsp;
+    <div class="input">
+      <button (click)="search()" (click)="cpt=1">Search</button>
+    </div>
+  </div>
+  <br>
+  <div *ngIf="isLoading" class="loading">
+    <br>
+    <br>
+    <br>
+    <img src="/assets/images/mog.gif" alt="">
+    <br>
+    <br>
+    <br>
+  </div>
+  <div class="table" *ngIf="cpt>=1 && freeCompanies.Results && !isLoading">
+    <div class="btn" *ngIf="cpt>1 || (cpt>=1&& freeCompanies.Pagination.PageNext > cpt)">
+      <button (click)="previousPage()" [disabled]="!freeCompanies.Pagination.PagePrev" class="first-child">Previous</button>
+      <div *ngFor="let page of numberPage" class="page">
+        <button (click)="changePage(page)" [ngClass]="{'active': page == cpt-1}">{{page+1}}</button>
+      </div>
+      <button (click)="nextPage()" [disabled]="!freeCompanies.Pagination.PageNext" class="last-child">Next</button>
+    </div>
+    <br>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Server</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let freeCompany of freeCompanies.Results">
+          <td>{{freeCompany.Name}}</td>
+          <td>{{freeCompany.Server}}</td>
+          <td><button routerLinkActive="router-link-active" (click)="getFreeCompany(freeCompany.ID)">Details</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="btn" *ngIf="cpt>1 || (cpt>=1&& freeCompanies.Pagination.PageNext > cpt)">
+      <button (click)="previousPage()" [disabled]="!freeCompanies.Pagination.PagePrev" class="first-child">Previous</button>
+      <div *ngFor="let page of numberPage" class="page">
+        <button (click)="changePage(page)" [ngClass]="{'active': page == cpt-1}">{{page+1}}</button>
+      </div>
+      <button (click)="nextPage()" [disabled]="!freeCompanies.Pagination.PageNext" class="last-child">Next</button>
+    </div>
+  </div>
+</div>
+
+

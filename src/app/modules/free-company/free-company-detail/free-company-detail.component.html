@@ -1,0 +1,53 @@
+<div class="body" *ngIf="!isLoading">
+  <br>
+  <button class="back" (click)="back()">back</button>
+  <br>
+  <div *ngIf="!freeCompany">
+    <p>No free company found</p>
+  </div>
+  <div *ngIf="freeCompany" class="parent">
+    <div class="items">
+      <div class="item">
+        <h1>Name: {{freeCompany.FreeCompany.Name}}</h1>
+        <h2>Server: {{freeCompany.FreeCompany.Server}}</h2>
+        <h3>Tag: {{freeCompany.FreeCompany.Tag}}</h3>
+        <h3>Active: {{freeCompany.FreeCompany.Active}}</h3>
+        <h3>Active Member Count: {{freeCompany.FreeCompany.ActiveMemberCount}}</h3>
+        <h3>DC: {{freeCompany.FreeCompany.DC}}</h3>
+        <h3>Grand Company: {{freeCompany.FreeCompany.GrandCompany}}</h3>
+        <h3>Rank: {{freeCompany.FreeCompany.Rank}}</h3>
+        <h3>Slogan: {{freeCompany.FreeCompany.Slogan}}</h3>
+        <h3>Formed: {{freeCompany.FreeCompany.Formed}}</h3>
+        <h3>Ranking: Month: {{freeCompany.FreeCompany.Ranking.Monthly}} - Week: {{freeCompany.FreeCompany.Ranking.Weekly}}</h3>
+        <h3>Seeking: <span *ngFor="let seeking of freeCompany.FreeCompany.Seeking"><img [src]="seeking.Icon" alt="" *ngIf="seeking.Status"></span></h3>
+        <h3>Server: {{freeCompany.FreeCompany.Server}}</h3>
+        <h3>Tag: {{freeCompany.FreeCompany.Tag}}</h3>
+      </div>
+      <div class="item">
+        <h3>Active Members</h3>
+        <table>
+          <tr>
+            <th>Avatar</th>
+            <th>Name</th>
+            <th>Rank</th>
+          </tr>
+          <tr *ngFor="let member of freeCompany.FreeCompanyMembers">
+            <td><img [src]="member.Avatar" alt=""></td>
+            <td>{{member.Name}}</td>
+            <td><img [src]="member.RankIcon" alt=""> {{member.Rank}}</td>
+            <td><button routerLinkActive="router-link-active" (click)="getCharacterById(member.ID)">Details</button></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="isLoading">
+  <br>
+  <br>
+  <br>
+  <img src="/assets/images/mog.gif" alt="">
+  <br>
+  <br>
+  <br>
+</div>

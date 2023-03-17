@@ -1,4 +1,6 @@
-<div class="body">
+<div class="body" *ngIf="!isLoading && !errorMessage && character">
+  <br>
+  <button class="back" (click)="back()">back</button>
   <br>
   <div *ngIf="!character">
     <p>No character found</p>
@@ -9,6 +11,7 @@
         <h1>Name: {{character.Character.Name}}</h1>
         <h2>Server: {{character.Character.Server}}</h2>
         <h3 *ngIf="character.Character.FreeCompanyName">FC: {{character.Character.FreeCompanyName}}</h3>
+        <button *ngIf="character.Character.FreeCompanyName" (click)="viewFreeCompany(character.Character.FreeCompanyId)">Details</button>
         <h3>Gender: {{gender}}</h3>
       </div>
       <div class="item">
@@ -21,4 +24,16 @@
       <img [src]="character.Character.Portrait" alt="" width="438" height="598">
     </div>
   </div>
+</div>
+<div *ngIf="isLoading">
+  <br>
+  <br>
+  <br>
+  <img src="/assets/images/mog.gif" alt="">
+  <br>
+  <br>
+  <br>
+</div>
+<div *ngIf="errorMessage">
+  <h1>{{errorMessage}}</h1>
 </div>

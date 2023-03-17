@@ -1,11 +1,10 @@
-<div class="body" *ngIf="!detail">
+<div class="body">
   <br>
   <div class="title">
     <h2>Search Character</h2>
   </div>
   <div class="form">
-    <div>
-      <label for="">server</label>
+    <div class="input">
       <select [(ngModel)]="server">
         <option></option>
         <optgroup *ngFor="let groupe of groupes" [label]="groupe.nom">
@@ -13,11 +12,14 @@
         </optgroup>
       </select>
     </div>
+    &nbsp;
     <div class="input">
-      <label for="">Name</label>
-      <input type="text" id="name" [(ngModel)]="name" placeholder="Character Name">
+      <input type="text" id="name" [(ngModel)]="name" placeholder="Character Name" (keyup.enter)="search()">
     </div>
-    <button (click)="search()" (click)="cpt=1">Search</button>
+    &nbsp;
+    <div class="input">
+      <button (click)="search()" (click)="cpt=1">Search</button>
+    </div>
   </div>
   <br>
   <div *ngIf="isLoading">
@@ -67,21 +69,4 @@
     <p>No character found</p>
   </div>
 </div>
-<div *ngIf="detail" class="child">
-  <br>
-  <div *ngIf="!isLoading">
-    <div class="backin">
-      <button (click)="back()" class="back">Back</button>
-    </div>
-    <router-outlet></router-outlet>
-  </div>
-  <div *ngIf="isLoading">
-    <br>
-    <br>
-    <br>
-    <img src="/assets/images/mog.gif" alt="">
-    <br>
-    <br>
-    <br>
-  </div>
-</div>
+
