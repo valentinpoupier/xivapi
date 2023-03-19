@@ -13,7 +13,7 @@
     <br>
     <br>
   </div>
-  <div class="table" *ngIf="items.Results && !isLoading">
+  <div class="table" *ngIf="!isLoading">
     <div class="btn" *ngIf="items.Pagination.PagePrev">
       <button (click)="prevPage()" [disabled]="!items.Pagination.PagePrev" class="first-child">Previous</button>
       <div *ngFor="let pages of nbrOfPages" class="page">
@@ -44,4 +44,8 @@
       </div>
       <button (click)="nextPage()" [disabled]="!items.Pagination.PageNext" class="last-child">Next</button>
     </div>
+  </div>
+  <div *ngIf="!items.Results">
+    <p>No item found</p>
+  </div>
 </div>

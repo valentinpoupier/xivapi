@@ -14,7 +14,7 @@
     </div>
     &nbsp;
     <div class="input">
-      <input type="text" id="name" [(ngModel)]="name" placeholder="Character Name" (keyup.enter)="search()">
+      <input type="text" id="name" [(ngModel)]="name" placeholder="Character Name" (keyup.enter)="search()" (keyup.enter)="cpt=1">
     </div>
     &nbsp;
     <div class="input">
@@ -31,7 +31,7 @@
     <br>
     <br>
   </div>
-  <div class="table" *ngIf="cpt>=1 && characters.Results && !isLoading">
+  <div class="table" *ngIf="cpt>=1 && characters.Results !== [] && !isLoading">
     <div class="btn" *ngIf="cpt>1 || (cpt>=1&& characters.Pagination.PageNext > cpt)">
       <button (click)="previousPage()" [disabled]="!characters.Pagination.PagePrev" class="first-child">Previous</button>
       <div *ngFor="let page of numberPage" class="page">

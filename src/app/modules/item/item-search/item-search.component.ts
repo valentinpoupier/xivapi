@@ -21,7 +21,19 @@ export class ItemSearchComponent implements OnInit {
     this.loadingService.getLoading().subscribe(loading => this.isLoading = loading);
   }
 
-  items! : ItemList;
+  items : ItemList = {
+    Pagination: {
+      Page: 0,
+      PageNext: 0,
+      PagePrev: 0,
+      PageTotal: 0,
+      Results: 0,
+      ResultsPerPage: 0,
+      ResultsTotal: 0
+    },
+    Results: [],
+    SpeedMs: 0
+  }
 
   name : string = '';
 
@@ -31,6 +43,10 @@ export class ItemSearchComponent implements OnInit {
 
   id : number = 0;
 
+  isEmpty() : boolean {
+    return this.items.Results.length == 0;
+  }
+
   search() {
     this._itemService.searchItem(this.name, this.page).subscribe((data : ItemList) => {
       this.items = data;
@@ -39,6 +55,7 @@ export class ItemSearchComponent implements OnInit {
         this.nbrOfPages.push(i);
       }
     })
+    console.log(this.items);
   }
 
   viewItem(id : number) {

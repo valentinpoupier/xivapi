@@ -4,6 +4,7 @@ import { ActivatedRouteSnapshot, ResolveFn } from '@angular/router';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { LoadingService } from '../loading/loading.service';
+import { Item } from '../../models/item';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,7 @@ export class ItemService {
   }
 }
 
-export const ItemResolver: ResolveFn<any> =
+export const ItemResolver: ResolveFn<Item> =
   (route: ActivatedRouteSnapshot) => {
     return inject(ItemService).getItem(route.paramMap.get('id'))
 }

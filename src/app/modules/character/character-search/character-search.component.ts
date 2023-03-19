@@ -67,6 +67,8 @@ export class CharacterSearchComponent implements OnInit {
 
   detail : boolean = false;
 
+  isEmpty : boolean = this.characters.Results.length == 0;
+
   search() {
     this._characterService.searchCharacter(this.name, this.server, this.cpt)
       .subscribe((data: CharacterList | any) => {

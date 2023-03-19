@@ -33,14 +33,6 @@ export class FreecompanyService {
     );
   }
 
-  getDetailsMembers(id: number | null) : Observable<any> {
-    const url = `${this.apiBaseUrl}/character/${id}`;
-    this.loadingService.setLoading(true); // Mettre l'état de chargement à true avant la requête
-    return this._HttpClient.get<Character>(url).pipe(
-      finalize(() => this.loadingService.setLoading(false)) // Mettre l'état de chargement à false après avoir reçu les données
-    );
-  }
-
 }
 
 export const FreecompanyResolver: ResolveFn<FreeCompany> =
@@ -48,7 +40,3 @@ export const FreecompanyResolver: ResolveFn<FreeCompany> =
     return inject(FreecompanyService).getFreecompany(route.paramMap.get('id'))
 }
 
-export const CharacterResolver: ResolveFn<Character> =
-  (route: ActivatedRouteSnapshot) => {
-    return inject(CharacterService).getCharacter(route.paramMap.get('id'))
-}

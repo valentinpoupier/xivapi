@@ -39,15 +39,6 @@ export class FreeCompanyDetailComponent implements OnInit {
     this._router.navigate(['../character', id]);
   }
 
-  getDetailsMembers() {
-    for (let member of this.freeCompany.FreeCompanyMembers) {
-      this._freecompanyService.getDetailsMembers(member.ID).subscribe((data : trueCharacter) => {
-        this.characters.push(data);
-        this.nbrOfMembersDone = this.characters.length;
-      })
-    }
-  }
-
   invertEnable() {
     this.isEnable = !this.isEnable;
   }
