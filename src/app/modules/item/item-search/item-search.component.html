@@ -1,8 +1,16 @@
 <div class="body">
-  <div>
-    <h1>Search</h1>
-    <input type="text" [(ngModel)]="name" (keyup.enter)="search()">
-    <button (click)="search()">Search</button>
+  <br>
+  <div class="title">
+    <h1>Search Item</h1>
+  </div>
+  <div class="form">
+    <div class="input">
+      <input type="text" [(ngModel)]="name" (keyup.enter)="search()" placeholder="Item Name">
+    </div>
+    &nbsp;
+    <div class="input">
+      <button (click)="search()">Search</button>
+    </div>
   </div>
   <div *ngIf="isLoading">
     <br>
@@ -13,8 +21,8 @@
     <br>
     <br>
   </div>
-  <div class="table" *ngIf="!isLoading">
-    <div class="btn" *ngIf="items.Pagination.PagePrev">
+  <div class="table" *ngIf="!isLoading && !isEmpty()">
+    <div class="btn" *ngIf="items.Pagination.PageNext">
       <button (click)="prevPage()" [disabled]="!items.Pagination.PagePrev" class="first-child">Previous</button>
       <div *ngFor="let pages of nbrOfPages" class="page">
         <button (click)="goToPage(pages)" [ngClass]="{'active': pages == page}">{{pages}}</button>
@@ -45,7 +53,7 @@
       <button (click)="nextPage()" [disabled]="!items.Pagination.PageNext" class="last-child">Next</button>
     </div>
   </div>
-  <div *ngIf="!items.Results">
-    <p>No item found</p>
+  <div *ngIf="isEmpty() && !isLoading && searchStart">
+    <h2>No item found</h2>
   </div>
 </div>

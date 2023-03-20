@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { CharacterList } from 'src/app/shared/models/characterlist';
 import { CharacterService } from 'src/app/shared/services/character/character.service';
 import { LoadingService } from 'src/app/shared/services/loading/loading.service';
@@ -14,6 +14,8 @@ export class CharacterSearchComponent implements OnInit {
   router: Router = this._router;
 
   isLoading: boolean = false;
+
+  searchStart: boolean = false;
 
   constructor(private _characterService : CharacterService, private _router : Router, private loadingService: LoadingService) { }
 
@@ -67,7 +69,12 @@ export class CharacterSearchComponent implements OnInit {
 
   detail : boolean = false;
 
-  isEmpty : boolean = this.characters.Results.length == 0;
+  isEmpty() : boolean {
+    if (this.characters.Results.length == 0) {
+      return true;
+    }
+    return false;
+  }
 
   search() {
     this._characterService.searchCharacter(this.name, this.server, this.cpt)
@@ -80,6 +87,7 @@ export class CharacterSearchComponent implements OnInit {
           this.numberPage.push(i+1);
         }
       });
+    this.searchStart = true;
   }
 
   getCharacterById(id : number) {

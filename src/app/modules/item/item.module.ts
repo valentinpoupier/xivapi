@@ -5,12 +5,14 @@ import { ItemRoutingModule } from './item-routing.module';
 import { ItemComponent } from './item/item.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ItemSearchComponent } from './item-search/item-search.component';
+import { ItemDetailComponent } from './item-detail/item-detail.component';
 
 
 @NgModule({
   declarations: [
     ItemComponent,
-    ItemSearchComponent
+    ItemSearchComponent,
+    ItemDetailComponent
   ],
   imports: [
     CommonModule,

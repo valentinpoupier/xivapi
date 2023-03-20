@@ -26,10 +26,12 @@ export class CharacterDetailComponent implements OnInit {
     }
     console.log(this.character);
 
-   }
+  }
+
   ngOnInit(): void {
     this.loadingService.getLoading().subscribe(loading => this.isLoading = loading);
   }
+  
   back() {
     window.history.back();
   }

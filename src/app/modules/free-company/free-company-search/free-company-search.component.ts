@@ -27,6 +27,8 @@ export class FreeCompanySearchComponent implements OnInit {
 
   cptImage : number = 0;
 
+  searchStart : boolean = false;
+
   constructor(private _freecompanyService : FreecompanyService, private _router : Router, private loadingService: LoadingService) { }
 
   groupes = [
@@ -47,6 +49,11 @@ export class FreeCompanySearchComponent implements OnInit {
     { nom: "\u8c46\u8c46\u67f4", options: ["ShuiJingTa2","YinLeiHu2","TaiYangHaiAn2","YiXiuJiaDe2","HongChaChuan2"]},
     { nom: "\u9646\u884c\u9e1f", options: ["HongYuHai","ShenYiZhiDi","LaNuoXiYa","HuanYingQunDao","MengYaChi","YuZhouHeYin","WoXianXiRan","ChenXiWangZuo"]}
   ]
+
+  isEmpty() : boolean {
+    return this.freeCompanies.Results.length == 0;
+  }
+
 
   getNumberImg() : number {
     this.cptImage++;
@@ -80,6 +87,7 @@ export class FreeCompanySearchComponent implements OnInit {
         }
       }
     );
+    this.searchStart = true;
   }
 
   nextPage() {

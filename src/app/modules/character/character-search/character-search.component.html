@@ -26,12 +26,24 @@
     <br>
     <br>
     <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <img src="/assets/images/mog.gif" alt="">
     <br>
     <br>
     <br>
+    <br>
+    <br>
+    <br>
+    <br>
   </div>
-  <div class="table" *ngIf="cpt>=1 && characters.Results !== [] && !isLoading">
+  <div *ngIf="!isLoading && isEmpty() && searchStart">
+    <h2>No character found</h2>
+  </div>
+  <div class="table" *ngIf="cpt>=1 && !isLoading && !isEmpty()">
     <div class="btn" *ngIf="cpt>1 || (cpt>=1&& characters.Pagination.PageNext > cpt)">
       <button (click)="previousPage()" [disabled]="!characters.Pagination.PagePrev" class="first-child">Previous</button>
       <div *ngFor="let page of numberPage" class="page">

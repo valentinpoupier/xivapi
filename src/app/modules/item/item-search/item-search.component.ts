@@ -43,6 +43,8 @@ export class ItemSearchComponent implements OnInit {
 
   id : number = 0;
 
+  searchStart : boolean = false;
+
   isEmpty() : boolean {
     return this.items.Results.length == 0;
   }
@@ -56,6 +58,7 @@ export class ItemSearchComponent implements OnInit {
       }
     })
     console.log(this.items);
+    this.searchStart = true;
   }
 
   viewItem(id : number) {

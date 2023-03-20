@@ -16,8 +16,8 @@ export class ItemService {
   constructor(private _HttpClient: HttpClient, private loadingService: LoadingService) { }
 
   searchItem(name: string, cpt: number) : Observable<any> {
-    let searchUrl = `${this.apiBaseUrl}/search?string=${name}&page=${cpt}`;
-    this.loadingService.setLoading(true);
+    let searchUrl = `${this.apiBaseUrl}/search?string=${name}&page=${cpt}&indexes=item`;
+    this.loadingService.setLoading(true); // Mettre l'état de chargement à true avant la requête
     return this._HttpClient.get(searchUrl).pipe(
       finalize(() => this.loadingService.setLoading(false)) // Mettre l'état de chargement à false après avoir reçu les données
     );

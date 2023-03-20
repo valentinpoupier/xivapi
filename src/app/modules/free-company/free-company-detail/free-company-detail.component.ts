@@ -24,7 +24,7 @@ export class FreeCompanyDetailComponent implements OnInit {
 
   isEnable : boolean = false;
 
-  constructor(private _activatedRoute: ActivatedRoute, private loadingService: LoadingService, private _router : Router, private _freecompanyService : FreecompanyService) {
+  constructor(private _activatedRoute: ActivatedRoute, private loadingService: LoadingService, private _router : Router) {
     console.log(this.freeCompany);
   }
 

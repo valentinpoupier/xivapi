@@ -1,0 +1,12 @@
+<div class="body">
+  <div class="title">
+    <h1>{{item.Name}}</h1>
+  </div>
+  <div class="img_item">
+    <img [src]="'https://xivapi.com/'+item.IconHD" [alt]="item.ItemUICategory.Name"/>
+  </div>
+  <div class="stat_item">
+    <p>Description: {{item.Description}}</p>
+    <p>Level: {{item.LevelEquip}}</p>
+  </div>
+</div>

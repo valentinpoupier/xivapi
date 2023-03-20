@@ -7,24 +7,31 @@
   </div>
   <div *ngIf="freeCompany" class="parent">
     <div class="items">
-      <div class="item">
-        <h1>Name: {{freeCompany.FreeCompany.Name}}</h1>
-        <h2>Server: {{freeCompany.FreeCompany.Server}}</h2>
-        <h3>Tag: {{freeCompany.FreeCompany.Tag}}</h3>
-        <h3>Active: {{freeCompany.FreeCompany.Active}}</h3>
-        <h3>Active Member Count: {{freeCompany.FreeCompany.ActiveMemberCount}}</h3>
-        <h3>DC: {{freeCompany.FreeCompany.DC}}</h3>
-        <h3>Grand Company: {{freeCompany.FreeCompany.GrandCompany}}</h3>
-        <h3>Rank: {{freeCompany.FreeCompany.Rank}}</h3>
-        <h3>Slogan: {{freeCompany.FreeCompany.Slogan}}</h3>
-        <h3>Formed: {{freeCompany.FreeCompany.Formed}}</h3>
-        <h3>Ranking: Month: {{freeCompany.FreeCompany.Ranking.Monthly}} - Week: {{freeCompany.FreeCompany.Ranking.Weekly}}</h3>
-        <h3>Seeking: <span *ngFor="let seeking of freeCompany.FreeCompany.Seeking"><img [src]="seeking.Icon" alt="" *ngIf="seeking.Status"></span></h3>
-        <h3>Server: {{freeCompany.FreeCompany.Server}}</h3>
-        <h3>Tag: {{freeCompany.FreeCompany.Tag}}</h3>
+      <div class="item_1">
+        <h1>{{freeCompany.FreeCompany.Name}}</h1>
+        <div class="desc">
+          <h3><i class="fa-solid fa-server"></i> : <span>{{freeCompany.FreeCompany.Server}}</span></h3>
+          <br>
+          <h3><i class="fa-solid fa-tag"></i> : <span>{{freeCompany.FreeCompany.Tag}}</span></h3>
+          <br>
+          <h3><i class="fa-solid fa-users"></i> : <span>{{freeCompany.FreeCompany.ActiveMemberCount}}</span></h3>
+          <br>
+          <h3>Active: <span>{{freeCompany.FreeCompany.Active}}</span></h3>
+          <br>
+          <h3>Grand Company: <span>{{freeCompany.FreeCompany.GrandCompany}}</span></h3>
+          <br>
+          <h3>Rank: <span>{{freeCompany.FreeCompany.Rank}}</span></h3>
+          <br>
+          <h3>Slogan: <span>{{freeCompany.FreeCompany.Slogan}}</span></h3>
+          <br>
+          <h3>Ranking in {{freeCompany.FreeCompany.Server}}: Month: {{freeCompany.FreeCompany.Ranking.Monthly}} - Week: {{freeCompany.FreeCompany.Ranking.Weekly}}</h3>
+        </div>
+        <h3>Seeking: </h3>
+        <div class="seeking">
+          <span *ngFor="let seeking of freeCompany.FreeCompany.Seeking"><img [src]="seeking.Icon" alt="" *ngIf="seeking.Status"></span>
+        </div>
       </div>
-      <div class="item">
-        <h3>Active Members</h3>
+      <div class="item_2">
         <table>
           <tr>
             <th>Avatar</th>
@@ -42,12 +49,21 @@
     </div>
   </div>
 </div>
-<div *ngIf="isLoading">
+<div *ngIf="isLoading" class="body">
   <br>
-  <br>
-  <br>
-  <img src="/assets/images/mog.gif" alt="">
-  <br>
-  <br>
-  <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <img src="/assets/images/mog.gif" alt="">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 </div>
