@@ -6,7 +6,12 @@
     <img [src]="'https://xivapi.com/'+item.IconHD" [alt]="item.ItemUICategory.Name"/>
   </div>
   <div class="stat_item">
-    <p>Description: {{item.Description}}</p>
+    <p *ngIf="item.EquipSlotCategory">Slot: {{item.EquipSlotCategory.Name}}</p>
+    <p *ngIf="item.ItemUICategory.Name">Category: {{item.ItemUICategory.Name}}</p>
+    <h3 *ngIf="item.ItemKind.Name">Item Kind</h3>
+    <p *ngIf="item.ItemKind.Name"> {{item.ItemKind.Name}}</p>
+    <h3 *ngIf="item.Description">Description</h3>
+    <p *ngIf="item.Description" [innerHTML]="item.Description">{{item.Description}}</p>
     <p>Level: {{item.LevelEquip}}</p>
   </div>
 </div>

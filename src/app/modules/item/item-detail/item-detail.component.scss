@@ -1,0 +1,31 @@
+.body{
+    background-color: #000000a9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 5%;
+    .title{
+        color: white;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    .stat_item{
+        color: white;
+        font-size: 1.2rem;
+        width: 50%;
+        border: 5px solid rgba(255, 255, 255, 0.342);
+        border-radius: 5px;
+        h3{
+          background-color: #000000ad;
+          padding: 2px 0;
+        }
+        p{
+          padding: 0 35px;
+        }
+    }
+}
