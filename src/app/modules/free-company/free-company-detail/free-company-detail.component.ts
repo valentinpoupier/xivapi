@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { trueCharacter } from 'src/app/shared/models/character';
 import { FC } from 'src/app/shared/models/freecompany';
-import { FreecompanyService } from 'src/app/shared/services/freecompany/freecompany.service';
 import { LoadingService } from 'src/app/shared/services/loading/loading.service';
 
 @Component({
@@ -16,15 +14,11 @@ export class FreeCompanyDetailComponent implements OnInit {
 
   freeCompany : FC = this._activatedRoute.snapshot.data['freeCompany'];
 
-  characters : trueCharacter[] = [];
-
-  nbrOfMembers : number = this.freeCompany.FreeCompanyMembers.length;
-
-  nbrOfMembersDone : number = 0;
-
   isEnable : boolean = false;
 
-  constructor(private _activatedRoute: ActivatedRoute, private loadingService: LoadingService, private _router : Router) {
+  constructor(private _activatedRoute: ActivatedRoute,
+    private loadingService: LoadingService,
+    private _router : Router) {
     console.log(this.freeCompany);
   }
 
@@ -42,4 +36,5 @@ export class FreeCompanyDetailComponent implements OnInit {
   invertEnable() {
     this.isEnable = !this.isEnable;
   }
+
 }
