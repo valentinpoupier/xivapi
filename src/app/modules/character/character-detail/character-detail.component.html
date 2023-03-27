@@ -12,7 +12,7 @@
       <button [ngClass]="{'active': mount}" (click)="viewMounts()">Mounts</button>
   </div>
   <div *ngIf="character" class="parent">
-    <div class="items" *ngIf="gear">
+    <div class="items_gear" *ngIf="gear">
       <app-gear [gear]="character.Character.GearSet"></app-gear>
     </div>
     <div class="items_minion" *ngIf="minion">
