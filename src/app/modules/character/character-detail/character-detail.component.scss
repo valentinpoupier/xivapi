@@ -7,6 +7,38 @@
   margin: 0;
   padding: 0;
 }
+.menu{
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  width: 60%;
+  .active{
+      background-color: #ff0000;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 1.2em;
+      padding: 0.3em 1em;
+    }
+  button{
+    padding: 0.3em 1em;
+    margin: 0.5em;
+    border: solid 1px #ffffff;
+    border-radius: 5px;
+    background-color: #00000088;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 1s ease-in-out;
+    &:hover{
+      transition: all 0.3s ease-in-out;
+      background-color: #8b8b8b;
+      color: #ffc400;
+      text-decoration: none;
+    }
+
+  }
+}
 .parent{
   background-color: #0000009d;
   display: flex;
@@ -28,7 +60,7 @@
     height: 100%;
     margin-left: 3.5em;
     padding: 0;
-    border: solid 1px #ffffff;
+    border: solid 1px #ffffff46;
     border-radius: 5px;
     .item{
       display: flex;

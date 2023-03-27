@@ -5,8 +5,23 @@
   <div *ngIf="!character">
     <p>No character found</p>
   </div>
+  <div class="menu">
+      <button [ngClass]="{'active': !gear && !minion && !mount}" (click)="viewCharacter()">Character</button>
+      <button [ngClass]="{'active': gear}" (click)="viewGear()">Gear</button>
+      <button [ngClass]="{'active': minion}" (click)="viewMinions()">Minions</button>
+      <button [ngClass]="{'active': mount}" (click)="viewMounts()">Mounts</button>
+  </div>
   <div *ngIf="character" class="parent">
-    <div class="items">
+    <div class="items" *ngIf="gear">
+      <app-gear [gear]="character.Character.GearSet"></app-gear>
+    </div>
+    <div class="items_minion" *ngIf="minion">
+      <app-minion [minions]="character.Minions"></app-minion>
+    </div>
+    <div class="items_mount" *ngIf="mount">
+      <app-mount [mounts]="character.Mounts"></app-mount>
+    </div>
+    <div class="items" *ngIf="!gear && !minion && !mount">
       <div class="item">
         <h1>{{character.Character.Name}}</h1>
         <h2>Server: {{character.Character.Server}}</h2>

@@ -1,0 +1,22 @@
+<div class="body">
+  <div class="attribute" *ngFor="let attribute of gear.Attributes">
+    <p class="name">{{attribute.Attribute.Name}} : <span class="value">{{attribute.Value}}</span></p>
+  </div>
+  <div class="gear">
+    <div class="container">
+      <img [src]="'https://xivapi.com'+gear.Gear.MainHand.Item.Icon" [title]="gear.Gear.MainHand.Item.Name">
+      <br>
+      <img [src]="'https://xivapi.com'+gear.Gear.Head.Item.Icon" [title]="gear.Gear.Head.Item.Name">
+      <img [src]="'https://xivapi.com'+gear.Gear.Body.Item.Icon" [title]="gear.Gear.Body.Item.Name">
+      <img [src]="'https://xivapi.com'+gear.Gear.Hands.Item.Icon" [title]="gear.Gear.Hands.Item.Name">
+      <img [src]="'https://xivapi.com'+gear.Gear.Legs.Item.Icon" [title]="gear.Gear.Legs.Item.Name">
+      <img [src]="'https://xivapi.com'+gear.Gear.Feet.Item.Icon" [title]="gear.Gear.Feet.Item.Name">
+      <br>
+      <img [src]="'https://xivapi.com'+gear.Gear.Earrings.Item.Icon" [title]="gear.Gear.Earrings.Item.Name">
+      <img [src]="'https://xivapi.com'+gear.Gear.Necklace.Item.Icon" [title]="gear.Gear.Necklace.Item.Name">
+      <img [src]="'https://xivapi.com'+gear.Gear.Bracelets.Item.Icon" [title]="gear.Gear.Bracelets.Item.Name">
+      <img [src]="'https://xivapi.com'+gear.Gear.Ring1.Item.Icon" [title]="gear.Gear.Ring1.Item.Name">
+      <img [src]="'https://xivapi.com'+gear.Gear.Ring2.Item.Icon" [title]="gear.Gear.Ring2.Item.Name">
+    </div>
+  </div>
+</div>

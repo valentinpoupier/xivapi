@@ -18,6 +18,12 @@ export class CharacterDetailComponent implements OnInit {
 
   errorMessage : string = ''
 
+  minion : boolean = false
+
+  mount : boolean = false
+
+  gear : boolean = false
+
   constructor(private _activatedRoute: ActivatedRoute, private loadingService: LoadingService, private _router : Router) {
     if(this.character.Character.Gender === 1) {
       this.gender = '♂'
@@ -31,13 +37,38 @@ export class CharacterDetailComponent implements OnInit {
   ngOnInit(): void {
     this.loadingService.getLoading().subscribe(loading => this.isLoading = loading);
   }
-  
+
   back() {
     window.history.back();
   }
 
   viewFreeCompany(id : string) {
     this._router.navigate(['../free-company', id]);
+  }
+
+
+  viewMinions() {
+    this.minion = true
+    this.mount = false
+    this.gear = false
+  }
+
+  viewMounts() {
+    this.mount = true
+    this.minion = false
+    this.gear = false
+  }
+
+  viewCharacter() {
+    this.mount = false
+    this.minion = false
+    this.gear = false
+  }
+
+  viewGear() {
+    this.gear = true
+    this.minion = false
+    this.mount = false
   }
 
 }

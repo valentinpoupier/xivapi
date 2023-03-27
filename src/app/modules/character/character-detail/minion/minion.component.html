@@ -1,0 +1,6 @@
+<h1>Minions : {{lenght}}</h1>
+<div class="body">
+  <div *ngFor="let minion of minions" class="container">
+    <img [src]="minion.Icon" [title]="minion.Name">
+  </div>
+</div>

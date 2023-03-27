@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Character } from '../../models/character';
 import { finalize } from 'rxjs/operators';
 import { LoadingService } from '../loading/loading.service';
+import { ItemRoot } from '../../models/item';
 
 @Injectable({
   providedIn: 'root'
@@ -24,12 +25,13 @@ export class CharacterService {
   }
 
   getCharacter(id: string | null) : Observable<any> {
-    const url = `${this.apiBaseUrl}/character/${id}?data=FC,MIMO,PVP`;
+    const url = `${this.apiBaseUrl}/character/${id}?data=FC,MIMO,PVP&extended=1`;
     this.loadingService.setLoading(true); // Mettre l'état de chargement à true avant la requête
     return this._HttpClient.get<Character>(url).pipe(
       finalize(() => this.loadingService.setLoading(false)) // Mettre l'état de chargement à false après avoir reçu les données
     );
   }
+
 }
 
 export const CharacterResolver: ResolveFn<Character> =
