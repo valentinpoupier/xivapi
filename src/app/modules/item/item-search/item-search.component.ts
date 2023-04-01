@@ -19,6 +19,7 @@ export class ItemSearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadingService.getLoading().subscribe(loading => this.isLoading = loading);
+    console.log(this.items);
   }
 
   items : ItemList = {
@@ -59,6 +60,7 @@ export class ItemSearchComponent implements OnInit {
     })
     console.log(this.items);
     this.searchStart = true;
+    console.log(this.items);
   }
 
   viewItem(id : number) {
