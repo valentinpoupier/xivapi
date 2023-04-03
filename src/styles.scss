@@ -13,3 +13,18 @@ body{
   font-size: 1em;
   text-align: center;
 }
+
+@media screen and (max-width: 768px) {
+  body{
+    background-image: url(assets/images/final-fantasy.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 1em;
+    text-align: center;
+  }
+}
+

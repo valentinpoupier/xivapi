@@ -94,3 +94,25 @@
     padding: 0;
   }
 }
+
+@media screen and (max-width: 880px) {
+  .home{
+    padding: 0;
+    padding-top: 80px;
+    .fonction{
+      width: 90%;
+    }
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .home{
+    padding: 0;
+    padding-top: 80px;
+    .fonction{
+      width: 90%;
+    }
+  }
+}
+
+
