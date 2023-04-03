@@ -78,6 +78,9 @@ export class FreeCompanySearchComponent implements OnInit {
   }
 
   search() {
+    if(this.server == 'any') {
+      this.server = '';
+    }
     this._freecompanyService.searchFreecompany(this.name, this.server, this.cpt)
       .subscribe((data: FCList) => {
         this.freeCompanies = data;
@@ -88,6 +91,9 @@ export class FreeCompanySearchComponent implements OnInit {
       }
     );
     this.searchStart = true;
+    if(this.server == '') {
+      this.server = 'any';
+    }
   }
 
   nextPage() {

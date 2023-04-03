@@ -77,6 +77,9 @@ export class CharacterSearchComponent implements OnInit {
   }
 
   search() {
+    if (this.server == 'any') {
+      this.server = '';
+    }
     this._characterService.searchCharacter(this.name, this.server, this.cpt)
       .subscribe((data: CharacterList | any) => {
         this.characters = data;
@@ -88,6 +91,9 @@ export class CharacterSearchComponent implements OnInit {
         }
       });
     this.searchStart = true;
+    if (this.server == '') {
+      this.server = 'any';
+    }
   }
 
   getCharacterById(id : number) {

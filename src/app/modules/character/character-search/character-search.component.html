@@ -6,7 +6,7 @@
   <div class="form">
     <div class="input">
       <select [(ngModel)]="server">
-        <option></option>
+        <option>any</option>
         <optgroup *ngFor="let groupe of groupes" [label]="groupe.nom">
           <option *ngFor="let option of groupe.options">{{option}}</option>
         </optgroup>
